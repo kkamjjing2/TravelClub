@@ -21,7 +21,7 @@ public class TravelClub {
 	public TravelClub(String clubName, String intro) { // 생성자 만들기
 		this();
 		setClubName(clubName);
-		this.intro = intro;
+		setIntro(intro);
 		this.foundationDay = DateUtil.today();
 	}
 
@@ -38,5 +38,44 @@ public class TravelClub {
 	// getter
 	public String getClubName() {
 		return this.clubName;
+	}
+
+	public void setIntro(String intro) {
+		if (intro.length() < MINIMUM_INTRO_LENGTH) {
+			System.out.println("Club intro should be longer then " + MINIMUM_INTRO_LENGTH);
+			return;
+		}
+		this.intro = intro;
+	}
+
+	public String getIntro() {
+		return this.intro;
+	}
+
+	public String getId() {
+		return this.id;
+	}
+
+	public String getFoundationDay() {
+		return this.foundationDay;
+	}
+
+	public static TravelClub getSample() {
+		// String clubName = "Sample Club";
+		// String intro = "Sample Club Intro~";
+		// TravelClub sampleClub = new TravelClub(clubName, intro);
+		// return sampleClub;
+		return new TravelClub("Sample Club", "Sample Intro");
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TravelClub club ID : ").append(id);
+		builder.append(", ClubName : ").append(clubName);
+		builder.append(", Intro : ").append(intro);
+		builder.append(", FoundationDay : ").append(foundationDay);
+
+		return builder.toString();
 	}
 }
